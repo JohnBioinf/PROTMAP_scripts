@@ -1,0 +1,6 @@
+copy_material.sh
+docker_notes.txt
+parameters_local.json
+note.txt
+*.swp
+*.swo
