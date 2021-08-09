@@ -1,0 +1,115 @@
+html,
+body {
+  font-family: "Lato", sans-serif;
+  height: 100%;
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav title {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+  color: #818181;
+  display: block;
+}
+
+.sidenav cand {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #111111;
+  display: block;
+}
+
+.True_candidate_homolog {
+  background-color: #4DBBD5;
+}
+
+.True_candidate_no_homolog {
+  background-color: #00A087;
+}
+
+.False_candidate{
+  background-color: #E64B35;
+}
+
+info {
+  font-size: 12px;
+}
+
+.sidenav cand[id]:hover {
+  color: #f1f1f1;
+}
+
+.content {
+  margin-left: 250px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+img {
+	width: 100%;
+}
+
+.spec{
+	width: 50%;
+}
+
+p {
+	word-wrap: break-word;
+}
+
+/* table */
+
+table.paleBlueRows {
+  border: 1px solid #FFFFFF;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.paleBlueRows td, table.paleBlueRows th {
+  border: 1px solid #FFFFFF;
+  padding: 3px 2px;
+}
+table.paleBlueRows tbody td {
+  font-size: 13px;
+}
+table.paleBlueRows tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.paleBlueRows thead {
+  background: #0B6FA4;
+  border-bottom: 5px solid #FFFFFF;
+}
+table.paleBlueRows thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #FFFFFF;
+}
+table.paleBlueRows thead th:first-child {
+  border-left: none;
+}
+
+table.paleBlueRows tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  background: #D0E4F5;
+  border-top: 3px solid #444444;
+}
+table.paleBlueRows tfoot td {
+  font-size: 14px;
+}

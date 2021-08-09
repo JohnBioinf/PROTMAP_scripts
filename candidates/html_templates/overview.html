@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+h1 {
+    background-color: #111;
+	color: #818181;
+}
+
+h1, h2, h3{
+	text-align: center;
+}
+img {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+ 	display: block;
+}
+</style>
+</head>
+<body>
+	<h1>Summary Candidates</h1>
+	<h2>Number of candidates: {{ num_cand }}</h2>
+	<h2>Number of "true" candidates: {{ num_true_cand }}</h2>
+	<h2>Number of "true" candidates with no functional homolog:
+		{{ num_true_novel_cand }}</h2>
+	<h2>Number of "true" novel candidates (no blast result):
+		{{ num_true_novel_no_blast_cand }}</h2>
+	<h2>Number of candidates with no functional homolog:
+		{{ num_novel }}</h2>
+	<h2>Number of candidates with hypothetical homolog:
+		{{ num_hypo }}</h2>
+	<h2>Number of candidates with s&#770; > 3.5:
+		{{ num_high_psm }}</h2>
+
+	<h1>Candidate List</h1>
+	<h2><a href="./cand_list.html">See full list of candidates<a></a></h2>
+
+	<h1>Protein with earlier starts</h1>
+	<h2><a href="./start_anno.html">See full list of proteins<a></a></h2>
+	
+	<h1>Scatter plots</h1>
+	<h2>Click on picture to go to interactive scatter plot of candidates</h2>
+
+	<h3>Blast Category</h3>
+	<a href="./blast_category.html">
+	<img src="blast_category.png" title="blast_category">
+	</a>
+
+	<h3>Genomic Context (different frame) Translation Category</h3>
+	<a href="./genomic_context_translated_category.html">
+	<img src="genomic_context_translated_category.png" title="genomic_context_translated_category">
+	</a>
+
+	<h3>Genomic Context (different frame) Translation Continous</h3>
+	<a href="./translation_continuous.html">
+	<img src="translation_continuous.png" title="translation">
+	</a>
+
+	<h3>Transcription Category</h3>
+	<a href="./transcription_category.html">
+	<img src="transcription_category.png" title="transcription_category">
+	</a>
+
+	<h3>Transcription Continous</h3>
+	<a href="./transcription_continuous.html">
+	<img src="transcription_continuous.png" title="transcription">
+	</a>
+
+	<h3>Genomic Context</h3>
+	<a href="./genomic_context_category.html">
+	<img src="genomic_context_category.png" title="genomic_context_category">
+	</a>
+
+	<h3>Number of Unique PSMs</h3>
+	<a href="./num_unique_psms_category.html">
+	<img src="num_unique_psms_category.png" title="num_unique_psms_category">
+	</a>
+
+	<h3>Genomic Context Strand</h3>
+	<a href="./genomic_context_strand.html">
+	<img src="genomic_context_strand.png" title="genomic_context_strand">
+	</a>
+
+	<h3>Start Codon Type</h3>
+	<a href="./start_codon.html">
+	<img src="start_codon.png" title="start_codon">
+	</a>
+
+</body>
+</html> 

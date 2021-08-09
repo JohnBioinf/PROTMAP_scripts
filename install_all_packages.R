@@ -1,0 +1,17 @@
+#!/usr/bin/Rscript
+print(.libPaths())
+options(warn=2)
+
+install.packages("Cairo", repos='http://cran.us.r-project.org')
+install.packages("Rcpp", repos='http://cran.us.r-project.org')
+install.packages("eulerr", repos='http://cran.us.r-project.org')
+install.packages("glue", repos='http://cran.us.r-project.org')
+install.packages("ggplot2", repos='http://cran.us.r-project.org')
+install.packages("ggsci", repos='http://cran.us.r-project.org')
+install.packages("gridExtra", repos='http://cran.us.r-project.org')
+install.packages("htmlwidgets", repos='http://cran.us.r-project.org')
+install.packages("latex2exp", repos='http://cran.us.r-project.org')
+install.packages("plotly", repos='http://cran.us.r-project.org')
+install.packages("RColorBrewer", repos='http://cran.us.r-project.org')
+install.packages("rjson", repos='http://cran.us.r-project.org')
+install.packages("viridis", repos='http://cran.us.r-project.org')

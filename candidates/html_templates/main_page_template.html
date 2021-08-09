@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="fun.js"></script>
+
+</head>
+<body>
+
+<div class="sidenav">
+	<title> Candidates </title>
+		<cand class="True_candidate_no_homolog">
+		True Candidate	
+		<br>
+		<info> with no known homolog or <br> no homolog </info>
+		</cand>
+		<cand class="True_candidate_homolog">
+		True Candidate 	
+		<br>
+		<info> with known homolog </info>
+		</cand>
+		<cand class="False_candidate">
+		False Candidate
+		</cand>
+	{% for candidate in candidate_list %}
+		{% set infos = candidate_dic[candidate] %}
+		{% if infos["classification"] == "False candidate" %}
+		<cand id="{{ loop.index }}" class="{{ infos["classification"].replace(" ", "_") }}">
+		{% else %}
+		{% if infos["blast_category"] == "Hypothetical" or infos["blast_category"] == "Novel" %}
+		<cand id="{{ loop.index }}" class="{{ infos["classification"].replace(" ", "_") + "_no_homolog" }}">
+		{% else %}
+		<cand id="{{ loop.index }}" class="{{ infos["classification"].replace(" ", "_") + "_homolog" }}">
+		{% endif %}
+		{% endif %}
+		{{ loop.index }}. {{ infos["species"] }}
+		<br>
+		<info id="{{ loop.index }}"> psm = {{ infos["num_psm"] }}, exp = {{ infos["num_exp"] }} </info>
+		</cand>
+	{% endfor %}
+</div>
+
+<div class="content">
+	{% for candidate in candidate_list %}
+		{% set infos = candidate_dic[candidate] %}
+		<div id="content_{{ loop.index }}" class="candidate">
+		<h2>Candidate</h2>
+
+		<h3>{{ infos["classification"] }}</h3>
+		<p>{{ infos["decision_process"].replace("s^", "s&#770;").replace("->", "&rarr;") }}</p>
+		
+		<h3>Candidate {{ infos["name"] }} In {{ infos["species"] }} {{ infos["contig"] }}</h3>
+		
+		<h3>Seq (len = {{ infos["seq_len"] }} ):</h3>
+		<p>{{ infos["seq"] }}</p>
+		
+		<p>see in <a href="{{ infos["ucsc_link"] }}">UCSC-Genome-Browser</a></p>
+		
+		{% if infos["strand"] == "1" %}
+		<p>orientation ---></p>
+		{% else %}
+		<p>orientation &lt;---</p>
+		{% endif %}
+		<h3>ID:</h3>
+		<p>{{ infos["candidate"] }}</p>
+		
+		<h3>Transkriptom</h3>
+		<p>{{ infos["score_trans"] * 100 }}% of gene length expressed over median expression of contig.</p>
+		<h3>s&#770;</h3>
+		<p>{{ infos["mean_top_psms"] }}</p>
+
+		<h3>unique PSMS</h3>
+		<p>{{ infos["unique_psms"] }}</p>
+		
+		<h3>Genomic Context</h3>
+		{% if infos["genomic_context_category"] == "no_overlap" %}
+			<p>No overlap with any annotation.</p>
+		{% else %}
+			{% if infos["genomic_context_strand"] == "other_strand" %}
+				<p>Candidate has annotation on OTHER strand.
+			{% else %}
+				<p>Candidate has annotation on SAME strand.
+			{% endif %}
+			Which has {{ infos["genomic_context_translated"] }} unique PSMs</p>
+		{% endif %}
+		
+		<h3>Genome Browser</h3>
+		<h4>The Gene</h3>
+		<figure>
+			<img secret_src="./pics/{{ infos["name"] }}_gene.svg"/>
+		</figure>
+		<h4>The Genomic Context</h3>
+		<figure>
+			<img secret_src="./pics/{{ infos["name"] }}_context.svg"/>
+		</figure>
+		
+		<h3>Blast Results</h3>
+		<p>{{ infos["blast_category"] }}</p>
+		<table class="paleBlueRows">
+		<thead>
+		<tr>
+		<th>Description</th>
+		<th>e-value</th>
+		<th>Query Coverage</th>
+		<th>Sequence Similarity</th>
+		<th>Ref Seq</th>
+		</tr>
+		</thead>
+		{% for line in infos["blast_res"][:100] %}
+		<tr>
+			<td><p> {{ "</p>\n<p>".join(line[0]) }} </p></td>
+			<td>{{ line[1] }}</td>
+			<td>{{ line[2] }}</td>
+			<td>{{ line[3] }}</td>
+			<td><a href="https://www.ncbi.nlm.nih.gov/protein/{{ line[4] }}" >{{ line[4] }} <a></td>
+		</tr>
+		{% endfor %}
+		</table>
+		</div>
+	{% endfor %}
+</div>
+</body>
+</html> 

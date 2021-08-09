@@ -1,0 +1,64 @@
+{
+    "bact": {
+        "long_name": "Bacteroides thetaiotaomicron VPI5482",
+        "contigs": [
+            "CP040529.1",
+            "CP040530.1"
+        ],
+        "short_name": "Bacteroides thetaiotaomicron"
+    },
+    "bifi": {
+        "long_name": "Bifidobacterium longum NCC2705",
+        "contigs": [
+            "AE014295.3",
+            "AF540971.1"
+        ],
+        "short_name": "Bifidobacterium longum"
+    },
+    "blautia": {
+        "long_name": "Blautia producta ATCC 27340 DSM 2950",
+        "contigs": [
+            "CP039126.1"
+        ],
+        "short_name": "Blautia producta"
+    },
+    "anaero": {
+        "long_name": "Anaerostipes caccae DSM 14662",
+        "contigs": [
+            "CP036345.1"
+        ],
+        "short_name": "Anaerostipes caccae"
+    },
+    "ery": {
+        "long_name": "Erysipelatoclostridium ramosum DSM 1402",
+        "contigs": [
+            "NZ_CP036346.1"
+        ],
+        "short_name": "Erysipelatoclostridium ramosum"
+    },
+    "clostri": {
+        "long_name": "Clostridium butyricum DSM 10702",
+        "contigs": [
+            "CP040629.1",
+            "CP040626.1",
+            "CP040628.1",
+            "CP040627.1"
+        ],
+        "short_name": "Clostridium butyricum"
+    },
+    "lacto": {
+        "long_name": "Lactobacillus plantarum subsp plantarum ATCC 14917 JCM 1149 CGMCC 12437",
+        "contigs": [
+            "CP039122.1",
+            "CP039121.1"
+        ],
+        "short_name": "Lactobacillus plantarum"
+    },
+    "ecoli": {
+        "long_name": "Escherichia coli str K12 substr MG1655",
+        "contigs": [
+            "U00096.3"
+        ],
+        "short_name": "Escherichia coli"
+    }
+}

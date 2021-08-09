@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="fun.js"></script>
+
+</head>
+<body>
+
+<div class="sidenav">
+	<title> Protein with earlier predicted starts </title>
+		<cand class="True_candidate_no_homolog">
+		Correct start
+		<br>
+		</cand>
+		<br>
+		<cand class="False_candidate">
+		Incorrect start
+		</cand>
+		<br>
+	{% for protein in protein_list %}
+		{% set infos = protein_info_dic[protein] %}
+		{% if infos["eval"] == "fp" %}
+		<cand id="{{ loop.index }}" class="False_candidate">
+		{% else %}
+		<cand id="{{ loop.index }}" class="True_candidate_no_homolog">
+		{% endif %}
+		{{ loop.index }}.
+		<br>
+		<info id="{{ loop.index }}"> psms = {{ infos["num_psm"] }},
+		<br> psms evidence earlier start = {{ infos["early_psms"]|length }} </info>
+		<br>
+		</cand>
+		<br>
+	{% endfor %}
+		<br>
+</div>
+
+<div class="content">
+	{% for protein in protein_list %}
+	{% set infos = protein_info_dic[protein] %}
+		<div id="content_{{ loop.index }}" class="candidate">
+		<h2>Protein {{ loop.index }}.</h2>
+
+		{% if infos["eval"] == "fp" %}
+		<h3>Wrong protein with incorrect start</h3>
+		{% else %}
+		{% if infos["early_psms"]|length == 0 %}
+		<h3>Correct protein with incorrect start</h3>
+		{% else %}
+		<h3>Correct protein with correct start</h3>
+		{% endif %}
+		{% endif %}
+		<h3>ID:</h3>
+		<p>{{ protein }}</p>
+
+		<h3>s&#770;</h3>
+		<p>{{ infos["mean_top_psms"] }}</p>
+
+		<h3>unique PSMS</h3>
+		<p>{{ infos["unique_psms"] }}</p>
+
+		<p>see in <a href="{{ infos["ucsc_link"] }}">UCSC-Genome-Browser</a></p>
+		
+		{% if infos["strand"] == "1" %}
+		<p>orientation ---></p>
+		{% else %}
+		<p>orientation &lt;---</p>
+		{% endif %}
+		<h3>Genome Browser</h3>
+		<h4>The Gene</h3>
+		<figure>
+			<img secret_src="./pics/{{ infos["species"] }}_{{ infos["id"] }}.svg"/>
+		</figure>
+		<h4>start</h3>
+		<figure>
+			<img secret_src="./pics/start_{{ infos["species"] }}_{{ infos["id"] }}.svg"/>
+		</figure>
+		<h3>Best PMS sepctras evidence before start</h3>
+		{% for psm in infos["printed_early_psms"] %}
+		<h4>{{ psm["experiment"] }}_{{ psm["num"] }}_{{ psm["scan"] }}</h3>
+		<figure>
+			<img class="spec" secret_src="./pics/{{ psm["experiment"] }}_{{ psm["num"] }}_{{ psm["scan"] }}.svg"/>
+		</figure>
+		{% endfor %}
+		</div>
+	{% endfor %}
+</div>
+</body>
+</html> 
