@@ -1,12 +1,11 @@
 {
-	"session_id": "",
-	"hub_id": "",
-	"data_dir": "",
-	"tmp_dir": "",
+	"session_id": "&hgsid=254520073_YxF73GvXUoEZDQOhbmYwEaD9sEA0",
+	"hub_id": "46785",
+	"data_dir": "/scr/k61san2/john/PROTMAP_data",
+	"tmp_dir": "/mnt/tmp",
 	"publication_dir": "",
-	"ms_dir": "",
-	"chrome_bin": "",
-	"bin_path": "",
-	"blastdb_dir": ""
+	"ms_dir": "/mnt/ms-spectra/",
+	"chrome_bin": "/root/bin/chrome-linux/chrome",
+	"bin_path": "/root/bin",
+	"blastdb_dir": "/mnt/nr/nr"
 }
-
